@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\ResultController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', [UserController::class, 'userList'])->name('userlist');
+Route::get('/task-2', [ResultController::class, 'index'])->name('results');
+Route::get('/task-2/3rd-highest', [ResultController::class, 'getfilterdData'])->name('3rdHighest');
